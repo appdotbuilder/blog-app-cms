@@ -113,8 +113,8 @@ export default function BlogShow({ post, relatedPosts }: Props) {
                     {/* Article Content */}
                     <article className="bg-white dark:bg-gray-800 rounded-lg shadow p-8 mb-8">
                         <div 
-                            className="prose prose-lg dark:prose-invert max-w-none prose-purple prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-purple-600 dark:prose-a:text-purple-400"
-                            dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br>') }}
+                            className="prose prose-lg dark:prose-invert max-w-none prose-purple prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-purple-600 dark:prose-a:text-purple-400 prose-img:rounded-lg prose-img:shadow-lg prose-pre:bg-gray-100 dark:prose-pre:bg-gray-700 prose-code:text-purple-600 dark:prose-code:text-purple-400"
+                            dangerouslySetInnerHTML={{ __html: post.content }}
                         />
                     </article>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\ImageUploadController;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
@@ -46,6 +47,10 @@ Route::controller(BlogController::class)->group(function () {
 // Public category and tag routes
 Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
+
+// Image upload API route
+Route::post('/api/upload-image', [ImageUploadController::class, 'store'])->middleware(['auth'])->name('images.store');
+Route::delete('/api/delete-image', [ImageUploadController::class, 'destroy'])->middleware(['auth'])->name('images.destroy');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

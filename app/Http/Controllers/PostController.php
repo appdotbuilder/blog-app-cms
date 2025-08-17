@@ -62,8 +62,8 @@ class PostController extends Controller
         $post = Post::create($validated);
 
         // Attach tags if provided
-        if (isset($validated['tags'])) {
-            $post->tags()->sync($validated['tags']);
+        if ($request->has('tag_ids')) {
+            $post->tags()->sync($request->input('tag_ids', []));
         }
 
         return redirect()->route('posts.show', $post)
@@ -123,8 +123,8 @@ class PostController extends Controller
         $post->update($validated);
 
         // Sync tags if provided
-        if (isset($validated['tags'])) {
-            $post->tags()->sync($validated['tags']);
+        if ($request->has('tag_ids')) {
+            $post->tags()->sync($request->input('tag_ids', []));
         }
 
         return redirect()->route('posts.show', $post)

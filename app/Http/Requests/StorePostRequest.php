@@ -30,8 +30,8 @@ class StorePostRequest extends FormRequest
             'status' => 'required|in:draft,published,archived',
             'published_at' => 'nullable|date',
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:tags,id',
+            'tag_ids' => 'nullable|array',
+            'tag_ids.*' => 'exists:tags,id',
         ];
     }
 
@@ -52,7 +52,7 @@ class StorePostRequest extends FormRequest
             'status.required' => 'Post status is required.',
             'status.in' => 'Invalid post status selected.',
             'category_id.exists' => 'Selected category does not exist.',
-            'tags.*.exists' => 'One or more selected tags do not exist.',
+            'tag_ids.*.exists' => 'One or more selected tags do not exist.',
         ];
     }
 }
